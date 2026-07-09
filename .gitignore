@@ -1,0 +1,17 @@
+
+node_modules/
+build/
+coverage/
+
+
+
+.env
+.env.test
+
+/mongo
+/mongo-test
+/coverage
+/postgres/
+
+.vscode
+dist/
