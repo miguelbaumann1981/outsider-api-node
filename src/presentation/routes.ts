@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { ArticlesRoutes } from './modules/articles/articles-routes';
+import { ArticlesRoutes } from './modules/articles/articles.routes';
 
 export class AppRoutes {
   static get routes(): Router {

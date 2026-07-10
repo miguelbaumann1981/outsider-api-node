@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { ArticlesService } from '../../services';
-import { ArticlesController } from './articles-controller';
+import { ArticlesController } from './articles.controller';
 
 export class ArticlesRoutes {
   static get routes(): Router {
@@ -9,6 +9,7 @@ export class ArticlesRoutes {
     const controller = new ArticlesController(articlesService);
 
     router.get('/', controller.getArticles);
+    router.get('/:slug', controller.getArticle);
 
     return router;
   }
