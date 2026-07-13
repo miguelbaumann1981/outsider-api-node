@@ -23,9 +23,9 @@ const articleSchema = new mongoose.Schema({
     required: [true, 'CATEGORY_REQUIRED'],
     enum: ArticleCategory,
   },
-  description: {
+  content: {
     type: String,
-    required: [true, 'DESCRIPTION_REQUIRED'],
+    required: [true, 'CONTENT_REQUIRED'],
   },
   author: {
     type: String,
