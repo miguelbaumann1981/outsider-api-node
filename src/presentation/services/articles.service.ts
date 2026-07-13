@@ -1,40 +1,18 @@
+import { ArticleCategory } from '../../data/enum/article-category.enum';
+import { Release } from '../../data/enum/release.enum';
 import { ArticleModel } from '../../data/mongo/models/article.model';
-import { ArticleCategoryDto, PaginationDto } from '../../domain/dtos';
 import { CustomError } from '../../domain/errors';
 
 export class ArticlesService {
-  async getArticles(
-    paginationDto: PaginationDto,
-    articleCategory?: 'POETRY' | 'NOVELS' | 'HISTORY',
-  ) {
-    const { page, limit } = paginationDto;
-
+  async getArticles() {
     try {
       const [articles, total] = await Promise.all([
-        articleCategory
-          ? ArticleModel.find({ category: articleCategory })
-              .skip((page - 1) * limit)
-              .limit(limit)
-          : ArticleModel.find()
-              .skip((page - 1) * limit)
-              .limit(limit),
-        articleCategory
-          ? ArticleModel.countDocuments({ category: articleCategory })
-          : ArticleModel.countDocuments(),
+        ArticleModel.find(),
+        ArticleModel.countDocuments(),
       ]);
+
       return {
-        page,
-        limit,
         total,
-        next: articleCategory
-          ? `/api/articles?page=${page + 1}&limit=${limit}&category=${articleCategory}`
-          : `/api/articles?page=${page + 1}&limit=${limit}`,
-        previous:
-          page - 1 > 0
-            ? articleCategory
-              ? `/api/articles?page=${page - 1}&limit=${limit}&category=${articleCategory}`
-              : `/api/articles?page=${page - 1}&limit=${limit}`
-            : null,
         articles,
       };
     } catch (error) {
@@ -42,8 +20,31 @@ export class ArticlesService {
     }
   }
 
-  async getArticleBySlug(slug: string) {
-    const article = await ArticleModel.findOne({ slug });
+  async getArticlesByRelease(
+    release: Release,
+    articleCategory?: ArticleCategory,
+  ) {
+    try {
+      const [articles, total] = await Promise.all([
+        articleCategory
+          ? ArticleModel.find({ release, category: articleCategory })
+          : ArticleModel.find({ release }),
+        articleCategory
+          ? ArticleModel.countDocuments({ release, category: articleCategory })
+          : ArticleModel.countDocuments({ release }),
+      ]);
+
+      return {
+        total,
+        articles,
+      };
+    } catch (error) {
+      throw CustomError.internalServer(`${error}`);
+    }
+  }
+
+  async getArticleBySlug(release: Release, slug: string) {
+    const article = await ArticleModel.findOne({ release, slug });
     if (!article) throw CustomError.badRequest('ARTICLE_NOT_FOUND');
 
     try {

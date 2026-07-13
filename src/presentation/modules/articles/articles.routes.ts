@@ -9,7 +9,8 @@ export class ArticlesRoutes {
     const controller = new ArticlesController(articlesService);
 
     router.get('/', controller.getArticles);
-    router.get('/:slug', controller.getArticle);
+    router.get('/:release', controller.getArticlesByRelease);
+    router.get('/:release/:slug', controller.getArticle);
 
     return router;
   }

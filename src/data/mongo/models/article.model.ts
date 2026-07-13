@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { ArticleCategory } from '../../enum/article-category.enum';
+import { Release } from '../../enum/release.enum';
 
 const articleSchema = new mongoose.Schema({
   title: {
@@ -19,7 +21,7 @@ const articleSchema = new mongoose.Schema({
   category: {
     type: String,
     required: [true, 'CATEGORY_REQUIRED'],
-    enum: ['POETRY', 'NOVELS', 'HISTORY'],
+    enum: ArticleCategory,
   },
   description: {
     type: String,
@@ -36,6 +38,11 @@ const articleSchema = new mongoose.Schema({
     type: Date,
     default: new Date(),
     required: [true, 'CREATED_AT_REQUIRED'],
+  },
+  release: {
+    type: String,
+    required: [true, 'RELEASE_REQUIRED'],
+    enum: Release,
   },
 });
 
