@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 import { Release } from '../../enum/release.enum';
 
 const releaseSchema = new mongoose.Schema({
+  index: {
+    type: Number,
+    required: true,
+  },
   month: {
     type: String,
     required: [true, 'MONTH_REQUIRED'],
