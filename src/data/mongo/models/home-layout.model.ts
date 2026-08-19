@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ArticleCategory } from '../../enum/article-category.enum';
+import { ArticleCategory } from '../../enum';
 
 const homeLayoutSchema = new mongoose.Schema({
   title: {

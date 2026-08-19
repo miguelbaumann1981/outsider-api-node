@@ -1,22 +1,16 @@
 import mongoose from 'mongoose';
-import { ArticleCategory } from '../../enum/article-category.enum';
-import { Release } from '../../enum/release.enum';
+import { ArticleCategory, Gender, Release } from '../../enum';
 
 const articleSchema = new mongoose.Schema({
-  title: {
+  authorArticle: {
     type: String,
-    required: [true, 'TITLE_REQUIRED'],
-    unique: true,
+    required: [true, 'AUTHOR_ARTICLE_REQUIRED'],
   },
-  subtitle: {
+  authorInfo: {
     type: String,
-    required: [true, 'SUBTITLE_REQUIRED'],
-    unique: true,
   },
-  slug: {
+  authorQuote: {
     type: String,
-    required: [true, 'SLUG_REQUIRED'],
-    unique: true,
   },
   category: {
     type: String,
@@ -25,24 +19,58 @@ const articleSchema = new mongoose.Schema({
   },
   content: {
     type: String,
-    required: [true, 'CONTENT_REQUIRED'],
   },
-  author: {
+  contentGroup: {
+    type: [Object],
+    properties: {
+      author: {
+        type: String,
+      },
+      document: {
+        type: String,
+      },
+      gender: {
+        type: String,
+      },
+      history: {
+        type: String,
+      },
+      title: {
+        type: String,
+      },
+    },
+  },
+  gender: {
     type: String,
-    required: [true, 'AUTHOR_REQUIRED'],
+    required: [true, 'GENDER_REQUIRED'],
+    enum: Gender,
   },
   image: {
     type: String,
   },
-  createdAt: {
-    type: Date,
-    default: new Date(),
-    required: [true, 'CREATED_AT_REQUIRED'],
+  quote: {
+    type: String,
+  },
+  references: {
+    type: String,
   },
   release: {
     type: String,
     required: [true, 'RELEASE_REQUIRED'],
     enum: Release,
+  },
+  slug: {
+    type: String,
+    required: [true, 'SLUG_REQUIRED'],
+    unique: true,
+  },
+  titleArticle: {
+    type: String,
+    required: [true, 'TITLE_ARTICLE_REQUIRED'],
+  },
+  titleCategory: {
+    type: String,
+    required: [true, 'TITLE_CATEGORY_REQUIRED'],
   },
 });
 
