@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ArticleCategory, Gender, Release } from '../../enum';
+import { ArticleCategory, Release } from '../../enum';
 
 const articleSchema = new mongoose.Schema({
   authorArticle: {
@@ -20,31 +20,6 @@ const articleSchema = new mongoose.Schema({
   content: {
     type: String,
   },
-  contentGroup: {
-    type: [Object],
-    properties: {
-      author: {
-        type: String,
-      },
-      document: {
-        type: String,
-      },
-      gender: {
-        type: String,
-      },
-      history: {
-        type: String,
-      },
-      title: {
-        type: String,
-      },
-    },
-  },
-  gender: {
-    type: String,
-    required: [true, 'GENDER_REQUIRED'],
-    enum: Gender,
-  },
   image: {
     type: String,
   },
@@ -64,7 +39,9 @@ const articleSchema = new mongoose.Schema({
     required: [true, 'SLUG_REQUIRED'],
     unique: true,
   },
-
+  subtitle: {
+    type: String,
+  },
   titleArticle: {
     type: String,
     required: [true, 'TITLE_ARTICLE_REQUIRED'],
@@ -79,9 +56,9 @@ articleSchema.set('toJSON', {
   virtuals: true,
   versionKey: false,
   transform: (_, ret) => {
-    const { _id, __v, contentGroup, ...rest } = ret;
+    const { _id, __v, ...rest } = ret;
 
-    return contentGroup?.length ? { ...rest, contentGroup } : rest;
+    return rest;
   },
 });
 
