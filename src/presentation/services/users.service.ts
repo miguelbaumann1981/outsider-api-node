@@ -12,6 +12,7 @@ export class UsersService {
       return {
         total: total,
         users,
+        
       };
     } catch (error) {
       throw CustomError.internalServer(`${error}`);

@@ -7,6 +7,9 @@ const aboutUsSchema = new mongoose.Schema({
   collaborators: {
     type: [Object],
     properties: {
+      name: {
+        type: String,
+      },
       text: {
         type: String,
       },

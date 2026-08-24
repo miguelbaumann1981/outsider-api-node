@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { handleControllerError } from '../../../domain/errors';
-import { AboutUssService } from '../../services';
+import { AboutUsService } from '../../services';
 
 export class AboutUsController {
-  constructor(private readonly aboutUsService: AboutUssService) {}
+  constructor(private readonly aboutUsService: AboutUsService) {}
 
   getAboutUsInfo = async (req: Request, res: Response) => {
     this.aboutUsService

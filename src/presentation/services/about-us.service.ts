@@ -1,12 +1,13 @@
 import { AboutUsModel } from '../../data/mongo/models';
 import { CustomError } from '../../domain/errors';
 
-export class AboutUssService {
+export class AboutUsService {
   async getAboutUsInfo() {
-    try {
-      const data = await AboutUsModel.find();
+    const data = await AboutUsModel.find();
+    if (!data) throw CustomError.badRequest('INFO_NOT_FOUND');
 
-      return data;
+    try {
+      return data[0];
     } catch (error) {
       throw CustomError.internalServer(`${error}`);
     }
