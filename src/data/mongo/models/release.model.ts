@@ -20,6 +20,10 @@ const releaseSchema = new mongoose.Schema({
     required: [true, 'RELEASE_REQUIRED'],
     enum: Release,
   },
+  name: {
+    type: String,
+    required: [true, 'NAME_REQUIRED'],
+  },
 });
 
 releaseSchema.set('toJSON', {

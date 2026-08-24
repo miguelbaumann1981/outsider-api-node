@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Edición invierno 26",
+    "month": "1",
+    "year": 2026,
+    "release": "jan26",
+    "index": 1
+  },
+  {
+    "name": "Edición primavera 26",
+    "month": "4",
+    "year": 2026,
+    "release": "apr26",
+    "index": 2
+  },
+  {
+    "name": "Edición verano 26",
+    "month": "7",
+    "year": 2026,
+    "release": "jul26",
+    "index": 3
+  },
+  {
+    "name": "Número actual",
+    "month": "10",
+    "year": 2026,
+    "release": "current",
+    "index": 4
+  }
+]
