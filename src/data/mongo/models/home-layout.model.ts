@@ -2,10 +2,6 @@ import mongoose from 'mongoose';
 import { ArticleCategory } from '../../enum';
 
 const homeLayoutSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: [true, 'TITLE_REQUIRED'],
-  },
   position: {
     type: Number,
     required: [true, 'TITLE_REQUIRED'],

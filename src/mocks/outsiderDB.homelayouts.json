@@ -1,55 +1,49 @@
 [
   {
-    "title": "Editorial",
     "position": 1,
     "color": {
-      "solid": "red",
-      "hover": "lightred"
+      "solid": "#ffa2a2",
+      "hover": "#fef2f2"
     },
     "category": "editorial"
   },
   {
-    "title": "Cuentistas del siglo",
     "position": 2,
     "color": {
-      "solid": "blue",
-      "hover": "lightblue"
+      "solid": "#ffd230",
+      "hover": "#fefce8"
     },
     "category": "tales"
   },
   {
-    "title": "Reductos de lo imposible",
     "position": 3,
     "color": {
-      "solid": "orange",
-      "hover": "lightorange"
+      "solid": "#7bf1a8",
+      "hover": "#f0fdf4"
     },
     "category": "outsiders"
   },
   {
-    "title": "Historias mínimas",
     "position": 4,
     "color": {
-      "solid": "pink",
-      "hover": "lightpink"
+      "solid": "#74d4ff",
+      "hover": "#f0f9ff"
     },
     "category": "microstory"
   },
   {
-    "title": "Artículo de opinión",
     "position": 5,
     "color": {
-      "solid": "yellow",
-      "hover": "lightyellow"
+      "solid": "#c4b4ff",
+      "hover": "#f5f3ff"
     },
     "category": "opinion"
   },
   {
-    "title": "La lista del año",
     "position": 6,
     "color": {
-      "solid": "purple",
-      "hover": "lightpurple"
+      "solid": "#ffa1ad",
+      "hover": "#fff1f2"
     },
     "category": "poetry"
   }
