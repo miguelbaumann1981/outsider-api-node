@@ -23,20 +23,19 @@ export class EmailService {
     const { name, email, message } = data;
 
     try {
-      const sentInformation = await this.transporter.sendMail({
+      await this.transporter.sendMail({
         from: `"Formulario Web" <${process.env.MAILER_EMAIL}>`,
         replyTo: email,
         to: process.env.MAILER_EMAIL,
-        subject: `Nuevo mensaje de ${name}`,
+        subject: `${name} te escribe desde el formulario de la web`,
         html: `
-          <h2>Nuevo mensaje desde la web</h2>
-          <p><strong>Nombre:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Mensaje:</strong></p>
-          <p>${message}</p>
+          <h3>Este es un nuevo mensaje enviado desde la página web de Outsider</h3>
+          <h3>Nombre: <strong>${name}</strong></h3>
+          <h3>Correo electrónico: <strong>${email}</strong></h3>
+          <h3>Mensaje:</h3>
+          <h3><strong>${message}</strong></h3>
         `,
       });
-      console.log(sentInformation);
       return true;
     } catch (error) {
       return false;

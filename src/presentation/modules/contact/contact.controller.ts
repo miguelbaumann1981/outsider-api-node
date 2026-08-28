@@ -4,7 +4,7 @@ import { EmailService } from '../../services';
 export class ContactController {
   constructor(public readonly emailService: EmailService) {}
 
-  sendEmail = (req: Request, res: Response) => {
+  sendEmail = async (req: Request, res: Response) => {
     const { name, email, message } = req.body;
 
     if (!name || !email || !message) {
@@ -12,7 +12,7 @@ export class ContactController {
     }
 
     try {
-      this.emailService.sendContactEmail({ name, email, message });
+      await this.emailService.sendContactEmail({ name, email, message });
       res.json({ success: true });
     } catch (err) {
       console.error(err);
