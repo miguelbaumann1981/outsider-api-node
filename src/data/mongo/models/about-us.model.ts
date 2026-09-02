@@ -18,6 +18,14 @@ const aboutUsSchema = new mongoose.Schema({
       },
     },
   },
+  isDraft: {
+    type: Boolean,
+    default: false,
+  },
+  isPublished: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 aboutUsSchema.set('toJSON', {
