@@ -1,5 +1,11 @@
 import { CommonObject } from '../../interfaces';
 
+type ReleaseCode = string & { readonly __releaseCodeBrand: unique symbol };
+
+function isReleaseCode(value: string): value is ReleaseCode {
+  return /^[A-Z]{3}[0-9]{3}$/.test(value);
+}
+
 export class ReleasesDto {
   constructor(
     public readonly index: number,
@@ -16,6 +22,7 @@ export class ReleasesDto {
     if (!month) return ['MISSING_MONTH'];
     if (!year) return ['MISSING_YEAR'];
     if (!release) return ['MISSING_RELEASE'];
+    if (!isReleaseCode(release)) return ['INVALID_RELEASE'];
     if (!name) return ['MISSING_NAME'];
 
     return [undefined, new ReleasesDto(index, month, year, release, name)];
