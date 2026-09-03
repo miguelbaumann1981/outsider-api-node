@@ -9,6 +9,8 @@ export class AboutUsRoutes {
     const controller = new AboutUsController(aboutUsService);
 
     router.get('/', controller.getAboutUsInfo);
+    router.post('/', controller.createAboutUsInfo);
+    router.put('/:id', controller.updateAboutUsInfo);
 
     return router;
   }

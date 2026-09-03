@@ -1,4 +1,4 @@
-import { CommonObject } from '../../config';
+import { CommonObject } from '../../interfaces';
 import { CustomError } from '../errors/custom.error';
 
 export class UserEntity {
