@@ -18,6 +18,10 @@ const aboutUsSchema = new mongoose.Schema({
       },
     },
   },
+  release: {
+    type: String,
+    required: [true, 'RELEASE_REQUIRED'],
+  },
   isDraft: {
     type: Boolean,
     default: false,

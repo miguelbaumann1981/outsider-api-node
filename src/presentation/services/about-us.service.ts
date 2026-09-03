@@ -8,7 +8,7 @@ export class AboutUsService {
     if (!data) throw CustomError.badRequest('INFO_NOT_FOUND');
 
     try {
-      return data[0];
+      return data;
     } catch (error) {
       throw CustomError.internalServer(`${error}`);
     }

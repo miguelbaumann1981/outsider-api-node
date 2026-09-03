@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { ArticlesService } from '../../services';
 import { handleControllerError } from '../../../domain/errors';
 import { ArticleCategory } from '../../../data/enum/article-category.enum';
-import { Release } from '../../../data/enum/release.enum';
 
 export class ArticlesController {
   constructor(private readonly articlesService: ArticlesService) {}
@@ -15,8 +14,10 @@ export class ArticlesController {
   };
 
   getArticlesByRelease = async (req: Request, res: Response) => {
-    const { release } = req.params as unknown as { release?: Release };
-    if (!release) throw res.status(400).json({ error: 'RELEASE_REQUIRED' });
+    const { release } = req.params;
+    if (typeof release !== 'string' || !release) {
+      throw res.status(400).json({ error: 'RELEASE_REQUIRED' });
+    }
     const category = req.query.category as ArticleCategory | undefined;
 
     this.articlesService
@@ -26,10 +27,15 @@ export class ArticlesController {
   };
 
   getArticle = async (req: Request, res: Response) => {
-    const { release } = req.params as unknown as { release?: Release };
-    if (!release) throw res.status(400).json({ error: 'RELEASE_REQUIRED' });
-    const { slug } = req.params as unknown as { slug?: string };
-    if (!slug) throw res.status(400).json({ error: 'SLUG_REQUIRED' });
+    const { release } = req.params;
+    if (typeof release !== 'string' || !release) {
+      throw res.status(400).json({ error: 'RELEASE_REQUIRED' });
+    }
+
+    const { slug } = req.params;
+    if (typeof slug !== 'string' || !slug) {
+      throw res.status(400).json({ error: 'SLUG_REQUIRED' });
+    }
 
     this.articlesService
       .getArticleBySlug(release, slug)

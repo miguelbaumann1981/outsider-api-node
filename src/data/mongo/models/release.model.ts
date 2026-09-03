@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { Release } from '../../enum/release.enum';
 
 const releaseSchema = new mongoose.Schema({
   index: {
@@ -18,7 +17,6 @@ const releaseSchema = new mongoose.Schema({
   release: {
     type: String,
     required: [true, 'RELEASE_REQUIRED'],
-    enum: Release,
   },
   name: {
     type: String,

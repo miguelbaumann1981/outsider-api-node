@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ArticleCategory, Release } from '../../enum';
+import { ArticleCategory } from '../../enum';
 
 const articleSchema = new mongoose.Schema({
   authorArticle: {
@@ -32,7 +32,6 @@ const articleSchema = new mongoose.Schema({
   release: {
     type: String,
     required: [true, 'RELEASE_REQUIRED'],
-    enum: Release,
   },
   slug: {
     type: String,

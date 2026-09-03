@@ -1,5 +1,4 @@
 import { ArticleCategory } from '../../data/enum/article-category.enum';
-import { Release } from '../../data/enum/release.enum';
 import { ArticleModel } from '../../data/mongo/models/article.model';
 import { CustomError } from '../../domain/errors';
 
@@ -21,7 +20,7 @@ export class ArticlesService {
   }
 
   async getArticlesByRelease(
-    release: Release,
+    release: string,
     articleCategory?: ArticleCategory,
   ) {
     try {
@@ -43,7 +42,7 @@ export class ArticlesService {
     }
   }
 
-  async getArticleBySlug(release: Release, slug: string) {
+  async getArticleBySlug(release: string, slug: string) {
     const article = await ArticleModel.findOne({ release, slug });
     if (!article) throw CustomError.badRequest('ARTICLE_NOT_FOUND');
 

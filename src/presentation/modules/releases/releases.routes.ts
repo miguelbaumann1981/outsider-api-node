@@ -9,6 +9,8 @@ export class ReleasesRoutes {
     const controller = new ReleasesController(releasesService);
 
     router.get('/', controller.getReleases);
+    router.post('/', controller.createRelease);
+    router.put('/:id', controller.updateRelease);
 
     return router;
   }
