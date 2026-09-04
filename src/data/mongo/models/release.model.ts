@@ -22,6 +22,14 @@ const releaseSchema = new mongoose.Schema({
     type: String,
     required: [true, 'NAME_REQUIRED'],
   },
+  isDraft: {
+    type: Boolean,
+    default: false,
+  },
+  isPublished: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 releaseSchema.set('toJSON', {
