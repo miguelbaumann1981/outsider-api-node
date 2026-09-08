@@ -1,1 +1,1 @@
-export * from './release.type';
+export * from './release-code.type';

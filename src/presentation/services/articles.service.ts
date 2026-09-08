@@ -1,5 +1,6 @@
 import { ArticleCategory } from '../../data/enum/article-category.enum';
 import { ArticleModel } from '../../data/mongo/models/article.model';
+import { ReleaseCode } from '../../data/types';
 import { CustomError } from '../../domain/errors';
 
 export class ArticlesService {
@@ -20,17 +21,20 @@ export class ArticlesService {
   }
 
   async getArticlesByRelease(
-    release: string,
+    releaseCode: ReleaseCode,
     articleCategory?: ArticleCategory,
   ) {
     try {
       const [articles, total] = await Promise.all([
         articleCategory
-          ? ArticleModel.find({ release, category: articleCategory })
-          : ArticleModel.find({ release }),
+          ? ArticleModel.find({ releaseCode, category: articleCategory })
+          : ArticleModel.find({ releaseCode }),
         articleCategory
-          ? ArticleModel.countDocuments({ release, category: articleCategory })
-          : ArticleModel.countDocuments({ release }),
+          ? ArticleModel.countDocuments({
+              releaseCode,
+              category: articleCategory,
+            })
+          : ArticleModel.countDocuments({ releaseCode }),
       ]);
 
       return {
@@ -42,8 +46,8 @@ export class ArticlesService {
     }
   }
 
-  async getArticleBySlug(release: string, slug: string) {
-    const article = await ArticleModel.findOne({ release, slug });
+  async getArticleBySlug(releaseCode: ReleaseCode, slug: string) {
+    const article = await ArticleModel.findOne({ releaseCode, slug });
     if (!article) throw CustomError.badRequest('ARTICLE_NOT_FOUND');
 
     try {

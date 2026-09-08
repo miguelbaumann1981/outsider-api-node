@@ -18,7 +18,7 @@ const aboutUsSchema = new mongoose.Schema({
       },
     },
   },
-  release: {
+  releaseCode: {
     type: String,
     required: [true, 'RELEASE_REQUIRED'],
   },

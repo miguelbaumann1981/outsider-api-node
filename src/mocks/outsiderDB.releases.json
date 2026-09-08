@@ -3,36 +3,40 @@
     "name": "Edición invierno 26",
     "month": "1",
     "year": 2026,
-    "release": "JAN026",
+    "releaseCode": "JAN026",
     "index": 1,
     "isDraft": false,
-    "isPublished": true
+    "isPublished": true,
+    "isCurrentRelease": false
   },
   {
     "name": "Edición primavera 26",
     "month": "4",
     "year": 2026,
-    "release": "APR026",
+    "releaseCode": "APR026",
     "index": 2,
     "isDraft": false,
-    "isPublished": true
+    "isPublished": true,
+    "isCurrentRelease": false
   },
   {
     "name": "Edición verano 26",
     "month": "7",
     "year": 2026,
-    "release": "JUL026",
+    "releaseCode": "JUL026",
     "index": 3,
     "isDraft": false,
-    "isPublished": true
+    "isPublished": true,
+    "isCurrentRelease": false
   },
   {
     "name": "Número actual",
     "month": "10",
     "year": 2026,
-    "release": "CURRENT",
+    "releaseCode": "XXX111",
     "index": 4,
     "isDraft": false,
-    "isPublished": true
+    "isPublished": true,
+    "isCurrentRelease": true
   }
 ]

@@ -14,7 +14,7 @@ const releaseSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'YEAR_REQUIRED'],
   },
-  release: {
+  releaseCode: {
     type: String,
     required: [true, 'RELEASE_REQUIRED'],
   },
@@ -27,6 +27,10 @@ const releaseSchema = new mongoose.Schema({
     default: false,
   },
   isPublished: {
+    type: Boolean,
+    default: false,
+  },
+  isCurrentRelease: {
     type: Boolean,
     default: false,
   },

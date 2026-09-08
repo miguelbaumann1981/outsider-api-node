@@ -29,7 +29,7 @@ const articleSchema = new mongoose.Schema({
   references: {
     type: String,
   },
-  release: {
+  releaseCode: {
     type: String,
     required: [true, 'RELEASE_REQUIRED'],
   },
@@ -48,6 +48,14 @@ const articleSchema = new mongoose.Schema({
   titleCategory: {
     type: String,
     required: [true, 'TITLE_CATEGORY_REQUIRED'],
+  },
+  isDraft: {
+    type: Boolean,
+    default: false,
+  },
+  isPublished: {
+    type: Boolean,
+    default: false,
   },
 });
 
