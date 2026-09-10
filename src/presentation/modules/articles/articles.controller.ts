@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { ArticlesService } from '../../services';
 import { handleControllerError } from '../../../domain/errors';
 import { ArticleCategory } from '../../../data/enum/article-category.enum';
+import { ReleaseCode } from '../../../data/types';
 
 export class ArticlesController {
   constructor(private readonly articlesService: ArticlesService) {}
@@ -21,7 +22,7 @@ export class ArticlesController {
     const category = req.query.category as ArticleCategory | undefined;
 
     this.articlesService
-      .getArticlesByRelease(release, category)
+      .getArticlesByRelease(release as ReleaseCode, category)
       .then((articles) => res.json(articles))
       .catch((error) => handleControllerError(error, res));
   };
@@ -38,7 +39,7 @@ export class ArticlesController {
     }
 
     this.articlesService
-      .getArticleBySlug(release, slug)
+      .getArticleBySlug(release as ReleaseCode, slug)
       .then((article) => res.json(article))
       .catch((error) => handleControllerError(error, res));
   };
