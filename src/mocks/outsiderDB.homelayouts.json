@@ -1,50 +1,57 @@
 [
   {
-    "position": 1,
-    "color": {
-      "solid": "#ffa2a2",
-      "hover": "#fef2f2"
-    },
-    "category": "editorial"
-  },
-  {
-    "position": 2,
-    "color": {
-      "solid": "#ffd230",
-      "hover": "#fefce8"
-    },
-    "category": "tales"
-  },
-  {
-    "position": 3,
-    "color": {
-      "solid": "#7bf1a8",
-      "hover": "#f0fdf4"
-    },
-    "category": "outsiders"
-  },
-  {
-    "position": 4,
-    "color": {
-      "solid": "#74d4ff",
-      "hover": "#f0f9ff"
-    },
-    "category": "microstory"
-  },
-  {
-    "position": 5,
-    "color": {
-      "solid": "#c4b4ff",
-      "hover": "#f5f3ff"
-    },
-    "category": "opinion"
-  },
-  {
-    "position": 6,
-    "color": {
-      "solid": "#ffa1ad",
-      "hover": "#fff1f2"
-    },
-    "category": "poetry"
+    "releaseCode": "XXX111",
+    "isDraft": false,
+    "isPublished": true,
+    "features": [
+      {
+        "position": 1,
+        "color": {
+          "solid": "#ffa2a2",
+          "hover": "#fef2f2"
+        },
+        "category": "editorial"
+      },
+      {
+        "position": 2,
+        "color": {
+          "solid": "#ffd230",
+          "hover": "#fefce8"
+        },
+        "category": "tales"
+      },
+      {
+        "position": 3,
+        "color": {
+          "solid": "#7bf1a8",
+          "hover": "#f0fdf4"
+        },
+        "category": "outsiders"
+      },
+      {
+        "position": 4,
+        "color": {
+          "solid": "#74d4ff",
+          "hover": "#f0f9ff"
+        },
+        "category": "microstory"
+      },
+      {
+        "position": 5,
+        "color": {
+          "solid": "#c4b4ff",
+          "hover": "#f5f3ff"
+        },
+        "category": "opinion"
+      },
+      {
+        "position": 6,
+        "color": {
+          "solid": "#ffa1ad",
+          "hover": "#fff1f2"
+        },
+        "category": "poetry"
+      }
+    ]
   }
 ]

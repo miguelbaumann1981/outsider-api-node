@@ -11,6 +11,7 @@ export class ReleasesRoutes {
     router.get('/', controller.getReleases);
     router.post('/', controller.createRelease);
     router.put('/:id', controller.updateRelease);
+    router.patch('/bulk', controller.bulkUpdateReleases);
 
     return router;
   }

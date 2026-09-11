@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { handleControllerError } from '../../../domain/errors';
 import { ReleasesService } from '../../services';
 import { ReleasesDto } from '../../../domain/dtos';
+import { ReleaseModel } from '../../../data/mongo/models';
 
 export class ReleasesController {
   constructor(private readonly releasesService: ReleasesService) {}
@@ -33,5 +34,44 @@ export class ReleasesController {
       .updateRelease(parsedId, req.body)
       .then((result) => res.status(200).json(result))
       .catch((error) => handleControllerError(error, res));
+  };
+
+  bulkUpdateReleases = async (req: Request, res: Response) => {
+    try {
+      const updates = req.body;
+
+      if (!Array.isArray(updates) || updates.length === 0) {
+        return res.status(400).json({
+          message: 'AT_LEAST_ONE_RELEASE_MANDATORY',
+        });
+      }
+
+      const operations = updates.map((u) => {
+        if (!u.id) {
+          throw new Error('RELEASE_ID_ITEM_MANDATORY');
+        }
+
+        const { id, ...fields } = u;
+
+        return {
+          updateOne: {
+            filter: { _id: id },
+            update: { $set: fields },
+          },
+        };
+      });
+
+      const result = await ReleaseModel.bulkWrite(operations, {
+        ordered: true,
+      });
+
+      return res.status(200).json({
+        message: 'ALL_RELEASES_UPDATED',
+        matchedCount: result.matchedCount,
+        modifiedCount: result.modifiedCount,
+      });
+    } catch (error: any) {
+      handleControllerError(error, res);
+    }
   };
 }

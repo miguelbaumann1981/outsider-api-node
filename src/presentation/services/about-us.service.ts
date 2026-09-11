@@ -40,7 +40,6 @@ export class AboutUsService {
         infoId: id,
         message:
           updating.modifiedCount === 0 ? 'NO_INFO_MODIFIED' : 'INFO_UPDATED',
-        updateDate: new Date(),
       };
     } catch (error) {
       throw CustomError.internalServer(`${error}`);

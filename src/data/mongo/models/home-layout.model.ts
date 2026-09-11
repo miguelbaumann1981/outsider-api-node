@@ -2,29 +2,45 @@ import mongoose from 'mongoose';
 import { ArticleCategory } from '../../enum';
 
 const homeLayoutSchema = new mongoose.Schema({
-  position: {
-    type: Number,
-    required: [true, 'TITLE_REQUIRED'],
-    enum: [1, 2, 3, 4, 5, 6],
+  releaseCode: {
+    type: String,
+    required: [true, 'RELEASE_REQUIRED'],
   },
-  color: {
+  isDraft: {
+    type: Boolean,
+    default: false,
+  },
+  isPublished: {
+    type: Boolean,
+    default: false,
+  },
+  features: {
     type: Object,
-    required: [true, 'COLOR_REQUIRED'],
     properties: {
-      solid: {
-        type: String,
-        required: [true, 'SOLID_COLOR_REQUIRED'],
+      position: {
+        type: Number,
+        required: [true, 'POSITION_REQUIRED'],
       },
-      hover: {
+      color: {
+        type: Object,
+        required: [true, 'COLOR_REQUIRED'],
+        properties: {
+          solid: {
+            type: String,
+            required: [true, 'SOLID_COLOR_REQUIRED'],
+          },
+          hover: {
+            type: String,
+            required: [true, 'HOVER_COLOR_REQUIRED'],
+          },
+        },
+      },
+      category: {
         type: String,
-        required: [true, 'HOVER_COLOR_REQUIRED'],
+        required: [true, 'CATEGORY_REQUIRED'],
+        enum: ArticleCategory,
       },
     },
-  },
-  category: {
-    type: String,
-    required: [true, 'CATEGORY_REQUIRED'],
-    enum: ArticleCategory,
   },
 });
 

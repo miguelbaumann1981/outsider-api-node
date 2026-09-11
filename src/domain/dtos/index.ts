@@ -3,3 +3,4 @@ export * from './new-password-user.dto';
 export * from './register-user.dto';
 export * from './about-us.dto';
 export * from './releases.dto';
+export * from './home-layout.dto';

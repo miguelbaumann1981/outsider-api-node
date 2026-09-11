@@ -10,6 +10,8 @@ export class HomeLayoutRoutes {
     const controller = new HomeLayoutController(homeLayoutService);
 
     router.get('/', controller.getHomeLayoutArticles);
+    router.post('/', controller.createHomeLayout);
+    router.put('/:id', controller.updateHomeLayout);
 
     return router;
   }

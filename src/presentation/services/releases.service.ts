@@ -42,7 +42,6 @@ export class ReleasesService {
           updating.modifiedCount === 0
             ? 'NO_RELEASE_MODIFIED'
             : 'RELEASE_UPDATED',
-        updateDate: new Date(),
       };
     } catch (error) {
       throw CustomError.internalServer(`${error}`);
