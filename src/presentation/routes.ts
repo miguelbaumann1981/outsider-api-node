@@ -14,7 +14,7 @@ export class AppRoutes {
     router.use('/api/auth', AuthRoutes.routes);
     router.use('/api/articles', ArticlesRoutes.routes);
     router.use('/api/releases', ReleasesRoutes.routes);
-    router.use('/api/layout-articles', HomeLayoutRoutes.routes);
+    router.use('/api/home-layout', HomeLayoutRoutes.routes);
     router.use('/api/about-us', AboutUsRoutes.routes);
     router.use('/api/contact', ContactRoutes.routes);
     router.use('/api/users', UsersRoutes.routes);

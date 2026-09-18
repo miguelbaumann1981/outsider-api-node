@@ -18,8 +18,6 @@ export class AboutUsDto {
     if (!collaborators) return ['MISSING_COLLABORATORS'];
     if (!Array.isArray(collaborators)) return ['COLLABORATORS_NOT_ARRAY'];
     if (!releaseCode) return ['MISSING_RELEASE'];
-    if (!isDraft) return ['MISSING_IS_DRAFT'];
-    if (!isPublished) return ['MISSING_IS_PUBLISHED'];
 
     return [
       undefined,

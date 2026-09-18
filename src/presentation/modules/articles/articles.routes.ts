@@ -11,6 +11,8 @@ export class ArticlesRoutes {
     router.get('/', controller.getArticles);
     router.get('/:release', controller.getArticlesByRelease);
     router.get('/:release/:slug', controller.getArticle);
+    router.post('/', controller.createArticle);
+    router.put('/:id', controller.updateArticle);
 
     return router;
   }
