@@ -6,6 +6,7 @@ import { HomeLayoutRoutes } from './modules/home-layout/home-layout.routes';
 import { AboutUsRoutes } from './modules/about-us/about-us.routes';
 import { ContactRoutes } from './modules/contact/contact.routes';
 import { UsersRoutes } from './modules/users/routes';
+import { ImagesRoutes } from './modules/images/images.routes';
 
 export class AppRoutes {
   static get routes(): Router {
@@ -18,6 +19,7 @@ export class AppRoutes {
     router.use('/api/about-us', AboutUsRoutes.routes);
     router.use('/api/contact', ContactRoutes.routes);
     router.use('/api/users', UsersRoutes.routes);
+    router.use('/api/images', ImagesRoutes.routes);
     return router;
   }
 }
