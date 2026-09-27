@@ -27,6 +27,7 @@ export class Server {
     this.app.use(cors());
     this.app.use(express.json()); // raw
     this.app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
+    this.app.disable('etag');
 
     //* Public Folder
     this.app.use(express.static(this.publicPath));
