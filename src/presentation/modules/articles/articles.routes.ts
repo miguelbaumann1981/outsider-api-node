@@ -13,6 +13,7 @@ export class ArticlesRoutes {
     router.get('/:release/:slug', controller.getArticle);
     router.post('/', controller.createArticle);
     router.put('/:id', controller.updateArticle);
+    router.delete('/:id', controller.deleteArticle);
 
     return router;
   }

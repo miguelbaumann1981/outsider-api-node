@@ -74,4 +74,16 @@ export class ReleasesController {
       handleControllerError(error, res);
     }
   };
+
+  deleteRelease = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const parsedId = Array.isArray(id) ? id[0] : id;
+
+    if (!parsedId) throw res.status(400).json({ error: 'RELEASE_REQUIRED' });
+
+    this.releasesService
+      .deleteReleaseById(parsedId)
+      .then((user) => res.json(user))
+      .catch((error) => handleControllerError(error, res));
+  };
 }

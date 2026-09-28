@@ -66,4 +66,16 @@ export class ArticlesController {
       .then((result) => res.status(200).json(result))
       .catch((error) => handleControllerError(error, res));
   };
+
+  deleteArticle = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const parsedId = Array.isArray(id) ? id[0] : id;
+
+    if (!parsedId) throw res.status(400).json({ error: 'ARTICLE_REQUIRED' });
+
+    this.articlesService
+      .deleteArticleById(parsedId)
+      .then((user) => res.json(user))
+      .catch((error) => handleControllerError(error, res));
+  };
 }

@@ -47,4 +47,19 @@ export class ReleasesService {
       throw CustomError.internalServer(`${error}`);
     }
   }
+
+  async deleteReleaseById(id: string) {
+    const release = await ReleaseModel.findOne({ _id: id });
+    if (!release) throw CustomError.badRequest('RELEASE_NOT_FOUND');
+
+    const releaseDeleted = await ReleaseModel.deleteOne({ _id: id });
+    if (releaseDeleted.deletedCount === 0)
+      throw CustomError.badRequest('RELEASE_NOT_DELETED');
+
+    try {
+      return release;
+    } catch (error) {
+      throw CustomError.internalServer(`${error}`);
+    }
+  }
 }

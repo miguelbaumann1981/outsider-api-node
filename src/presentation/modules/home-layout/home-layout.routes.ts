@@ -12,6 +12,7 @@ export class HomeLayoutRoutes {
     router.get('/', controller.getHomeLayoutArticles);
     router.post('/', controller.createHomeLayout);
     router.put('/:id', controller.updateHomeLayout);
+    router.delete('/:id', controller.deleteHomeLayout);
 
     return router;
   }

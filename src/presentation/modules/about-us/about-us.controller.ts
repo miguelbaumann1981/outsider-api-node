@@ -34,4 +34,16 @@ export class AboutUsController {
       .then((result) => res.status(200).json(result))
       .catch((error) => handleControllerError(error, res));
   };
+
+  deleteAboutUs = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const parsedId = Array.isArray(id) ? id[0] : id;
+
+    if (!parsedId) throw res.status(400).json({ error: 'ABOUT_US_REQUIRED' });
+
+    this.aboutUsService
+      .deleteAboutUsById(parsedId)
+      .then((user) => res.json(user))
+      .catch((error) => handleControllerError(error, res));
+  };
 }

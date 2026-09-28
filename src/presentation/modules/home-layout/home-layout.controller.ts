@@ -35,4 +35,17 @@ export class HomeLayoutController {
       .then((result) => res.status(200).json(result))
       .catch((error) => handleControllerError(error, res));
   };
+
+  deleteHomeLayout = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const parsedId = Array.isArray(id) ? id[0] : id;
+
+    if (!parsedId)
+      throw res.status(400).json({ error: 'HOME_LAYOUT_REQUIRED' });
+
+    this.homeLayoutService
+      .deleteHomeLayoutById(parsedId)
+      .then((user) => res.json(user))
+      .catch((error) => handleControllerError(error, res));
+  };
 }

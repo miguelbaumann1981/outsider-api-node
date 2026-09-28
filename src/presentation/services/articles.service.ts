@@ -91,4 +91,19 @@ export class ArticlesService {
       throw CustomError.internalServer(`${error}`);
     }
   }
+
+  async deleteArticleById(id: string) {
+    const article = await ArticleModel.findOne({ _id: id });
+    if (!article) throw CustomError.badRequest('ARTICLE_NOT_FOUND');
+
+    const articleDeleted = await ArticleModel.deleteOne({ _id: id });
+    if (articleDeleted.deletedCount === 0)
+      throw CustomError.badRequest('ARTICLE_NOT_DELETED');
+
+    try {
+      return article;
+    } catch (error) {
+      throw CustomError.internalServer(`${error}`);
+    }
+  }
 }

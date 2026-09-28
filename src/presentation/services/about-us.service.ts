@@ -45,4 +45,19 @@ export class AboutUsService {
       throw CustomError.internalServer(`${error}`);
     }
   }
+
+  async deleteAboutUsById(id: string) {
+    const aboutUs = await AboutUsModel.findOne({ _id: id });
+    if (!aboutUs) throw CustomError.badRequest('RELEASE_NOT_FOUND');
+
+    const aboutUsDeleted = await AboutUsModel.deleteOne({ _id: id });
+    if (aboutUsDeleted.deletedCount === 0)
+      throw CustomError.badRequest('RELEASE_NOT_DELETED');
+
+    try {
+      return aboutUs;
+    } catch (error) {
+      throw CustomError.internalServer(`${error}`);
+    }
+  }
 }

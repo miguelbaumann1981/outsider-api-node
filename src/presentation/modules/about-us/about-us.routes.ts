@@ -11,6 +11,7 @@ export class AboutUsRoutes {
     router.get('/', controller.getAboutUsInfo);
     router.post('/', controller.createAboutUsInfo);
     router.put('/:id', controller.updateAboutUsInfo);
+    router.delete('/:id', controller.deleteAboutUs);
 
     return router;
   }

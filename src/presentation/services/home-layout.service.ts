@@ -47,4 +47,19 @@ export class HomeLayoutService {
       throw CustomError.internalServer(`${error}`);
     }
   }
+
+  async deleteHomeLayoutById(id: string) {
+    const layout = await HomeLayoutModel.findOne({ _id: id });
+    if (!layout) throw CustomError.badRequest('HOME_LAYOUT_NOT_FOUND');
+
+    const layoutDeleted = await HomeLayoutModel.deleteOne({ _id: id });
+    if (layoutDeleted.deletedCount === 0)
+      throw CustomError.badRequest('HOME_LAYOUT_NOT_DELETED');
+
+    try {
+      return layout;
+    } catch (error) {
+      throw CustomError.internalServer(`${error}`);
+    }
+  }
 }
