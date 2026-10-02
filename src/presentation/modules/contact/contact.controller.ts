@@ -12,7 +12,7 @@ export class ContactController {
     }
 
     try {
-      await this.emailService.sendContactEmail({ name, email, message });
+      await this.emailService.sendResendEmail({ name, email, message });
       res.json({ success: true });
     } catch (err) {
       console.error(err);
